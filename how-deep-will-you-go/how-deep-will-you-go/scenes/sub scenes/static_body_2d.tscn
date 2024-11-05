@@ -1,0 +1,19 @@
+[gd_scene load_steps=3 format=3 uid="uid://cdh3grws7hbth"]
+
+[ext_resource type="Texture2D" uid="uid://cdlmq6th40a1h" path="res://sprites/cactus-export.png" id="1_2tjrj"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_ldakn"]
+size = Vector2(59, 120)
+
+[node name="StaticBody2D" type="StaticBody2D"]
+position = Vector2(213, 133)
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture_filter = 1
+position = Vector2(252.5, 179.5)
+scale = Vector2(8.5625, 8.4375)
+texture = ExtResource("1_2tjrj")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(252.5, 189)
+shape = SubResource("RectangleShape2D_ldakn")
