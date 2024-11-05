@@ -6,7 +6,14 @@
 [node name="main" type="Node2D"]
 
 [node name="CharacterBody2D" parent="." instance=ExtResource("1_3ek7r")]
+unique_name_in_owner = true
+z_index = 1
 position = Vector2(383, 249)
 
 [node name="StaticBody2D" parent="." instance=ExtResource("2_xm0x0")]
+unique_name_in_owner = true
 position = Vector2(406, 106)
+
+[connection signal="attack" from="CharacterBody2D" to="StaticBody2D" method="_on_character_body_2d_attack"]
+[connection signal="body_entered" from="StaticBody2D" to="CharacterBody2D" method="_on_static_body_2d_body_entered"]
+[connection signal="body_exited" from="StaticBody2D" to="CharacterBody2D" method="_on_static_body_2d_body_exited"]

@@ -1,10 +1,74 @@
-[gd_scene load_steps=4 format=3 uid="uid://d1inqjaw0acfn"]
+[gd_scene load_steps=9 format=3 uid="uid://d1inqjaw0acfn"]
 
 [ext_resource type="Script" path="res://scripts/player-movement.gd" id="1_2wbya"]
 [ext_resource type="Texture2D" uid="uid://c84xm3vufs4j8" path="res://sprites/Sprite-0003.png" id="2_fch66"]
+[ext_resource type="Texture2D" uid="uid://cdlmq6th40a1h" path="res://sprites/cactus-export.png" id="3_4sypn"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_t8nu3"]
 size = Vector2(81, 120)
+
+[sub_resource type="Animation" id="Animation_mulm0"]
+resource_name = "attack"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("test_sword:rotation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0.0333334, 0.366667, 0.633333, 0.933333),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 0,
+"values": [0.855176, 1.50879, 2.1554, 0.855176]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("test_sword:position")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0.0333334, 0.333333, 0.633333, 0.933333),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 0,
+"values": [Vector2(41, -28), Vector2(42, -13), Vector2(45, 10), Vector2(41, -28)]
+}
+
+[sub_resource type="Animation" id="Animation_oltb7"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("test_sword:rotation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [0.855176]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("test_sword:position")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(41, -28)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_m2o0c"]
+_data = {
+"RESET": SubResource("Animation_oltb7"),
+"attack": SubResource("Animation_mulm0")
+}
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_e10xi"]
+size = Vector2(13.7111, 19.7946)
 
 [node name="Player" type="CharacterBody2D"]
 script = ExtResource("1_2wbya")
@@ -18,3 +82,26 @@ texture = ExtResource("2_fch66")
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 position = Vector2(-7.5, -4)
 shape = SubResource("RectangleShape2D_t8nu3")
+
+[node name="test_sword" type="Area2D" parent="."]
+unique_name_in_owner = true
+texture_filter = 1
+position = Vector2(41, -28)
+rotation = 0.855176
+scale = Vector2(3.67344, 4.10573)
+
+[node name="Sprite2D" type="Sprite2D" parent="test_sword"]
+texture = ExtResource("3_4sypn")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+unique_name_in_owner = true
+libraries = {
+"": SubResource("AnimationLibrary_m2o0c")
+}
+
+[node name="CollisionShape2D2" type="CollisionShape2D" parent="."]
+unique_name_in_owner = true
+position = Vector2(31.8554, -21.334)
+rotation = 0.855176
+scale = Vector2(3.67344, 4.10572)
+shape = SubResource("RectangleShape2D_e10xi")

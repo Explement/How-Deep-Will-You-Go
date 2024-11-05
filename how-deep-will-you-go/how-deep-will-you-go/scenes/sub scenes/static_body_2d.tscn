@@ -1,12 +1,20 @@
-[gd_scene load_steps=3 format=3 uid="uid://cdh3grws7hbth"]
+[gd_scene load_steps=6 format=3 uid="uid://cdh3grws7hbth"]
 
+[ext_resource type="Script" path="res://scripts/static_body_2d.gd" id="1_2fo52"]
 [ext_resource type="Texture2D" uid="uid://cdlmq6th40a1h" path="res://sprites/cactus-export.png" id="1_2tjrj"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_ldakn"]
 size = Vector2(59, 120)
 
-[node name="StaticBody2D" type="StaticBody2D"]
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_en5cr"]
+bg_color = Color(0.5782, 0.101983, 0.105336, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_rkgxm"]
+bg_color = Color(0.166276, 0.492068, 0.225196, 1)
+
+[node name="StaticBody2D" type="Area2D"]
 position = Vector2(213, 133)
+script = ExtResource("1_2fo52")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
 texture_filter = 1
@@ -17,3 +25,14 @@ texture = ExtResource("1_2tjrj")
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 position = Vector2(252.5, 189)
 shape = SubResource("RectangleShape2D_ldakn")
+
+[node name="ProgressBar" type="ProgressBar" parent="."]
+unique_name_in_owner = true
+offset_left = 216.0
+offset_top = 97.0
+offset_right = 294.0
+offset_bottom = 124.0
+theme_override_styles/background = SubResource("StyleBoxFlat_en5cr")
+theme_override_styles/fill = SubResource("StyleBoxFlat_rkgxm")
+max_value = 10.0
+value = 10.0
