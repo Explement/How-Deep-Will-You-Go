@@ -25,13 +25,12 @@ func strike():
 		%AnimationPlayer.play("attack")
 	else:
 		%AnimationPlayer.play("attack")
-		print("miss")
+		
 	
 
 
 func _on_static_body_2d_body_entered(body):
 	if (body.name == "CharacterBody2D"):
-		print("its good")
 		enemy_in_range = true
 		
 	
