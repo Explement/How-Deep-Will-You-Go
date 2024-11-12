@@ -14,37 +14,43 @@ var is_attacking = false
 func _process(delta):
 	if Input.is_action_just_pressed("strike"):
 		strike()
-	if velocity.x <= 0 and is_attacking == false:
+	if velocity.x < 0 and is_attacking == false:
 		%animations.play("sword_left")
 	elif velocity.x >= 0 and is_attacking == false:
 		%animations.play("sword_right")
+	
+		
 		
 func _physics_process(delta):
+	var current_velocity_x = velocity.x
+	var last_velocity_x = current_velocity_x
 	var direction = Input.get_vector("left", "right", "up", "down")
 	velocity = direction * speed
 	move_and_slide()
-	if velocity.x <= 0:
+	
+	
+	if velocity.x < 0:
 		%player_sprite.flip_h = true
 		%sword_sprite.flip_h = true
 		%sword_collision_front.disabled = true
 		%sword_collision_back.disabled = false
-	elif velocity.x >= 0:
+	elif velocity.x > 0:
 		%player_sprite.flip_h = false
 		%sword_sprite.flip_h = false
 		%sword_collision_back.disabled = true
 		%sword_collision_front.disabled = false
+	elif velocity.x == 0:
+		%player_sprite.flip_h = false
+		%sword_sprite.flip_h = false
 		
 # combat
 func strike():
 	is_attacking = true
 	%attack_animation_overrule_timer.start()
-	if velocity.x > 0:
+	if velocity.x >= 0:
 		%animations.play("attack_front")
 	elif velocity.x < 0:
 		%animations.play("attack_back")
-	elif velocity.x == 0:
-		%animations.play("attack_back")
-		print("goog")
 	if enemy_in_range == true and cooldown == false:
 		emit_signal("attack", attack_damage)
 		cooldown = true

@@ -1,6 +1,6 @@
 [gd_scene load_steps=6 format=3 uid="uid://cdh3grws7hbth"]
 
-[ext_resource type="Script" path="res://scripts/static_body_2d.gd" id="1_2fo52"]
+[ext_resource type="Script" path="res://scripts/cactus.gd" id="1_2fo52"]
 [ext_resource type="Texture2D" uid="uid://cdlmq6th40a1h" path="res://sprites/cactus-export.png" id="1_2tjrj"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_ldakn"]
@@ -26,7 +26,7 @@ texture = ExtResource("1_2tjrj")
 position = Vector2(252.5, 189)
 shape = SubResource("RectangleShape2D_ldakn")
 
-[node name="ProgressBar" type="ProgressBar" parent="."]
+[node name="cactus_health_bar" type="ProgressBar" parent="."]
 unique_name_in_owner = true
 offset_left = 216.0
 offset_top = 97.0
