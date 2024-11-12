@@ -60,11 +60,9 @@ func strike():
 	
 
 
-func _on_static_body_2d_body_entered(body):
-	if (body.name == "player"):
+func _on_static_body_2d_body_entered(body: CharacterBody2D):
 		enemy_in_range = true
-func _on_static_body_2d_body_exited(body):
-	if (body.name == "player"):
+func _on_static_body_2d_body_exited(body: CharacterBody2D):
 		enemy_in_range = false
 
 func _on_sword_cooldown_timeout():

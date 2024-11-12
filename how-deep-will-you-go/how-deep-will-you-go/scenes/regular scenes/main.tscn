@@ -190,7 +190,7 @@ script = ExtResource("6_r81hv")
 
 [node name="Camera2D" type="Camera2D" parent="scecne_objects"]
 position = Vector2(384, 286)
-zoom = Vector2(1.5, 1.5)
+zoom = Vector2(0.5, 0.5)
 
 [node name="enemies" type="Node" parent="scecne_objects"]
 
@@ -229,6 +229,7 @@ layout_mode = 0
 offset_right = 40.0
 offset_bottom = 40.0
 
+[connection signal="cactus_intantiate" from="quest_manager" to="game_manager" method="_on_quest_manager_cactus_intantiate"]
 [connection signal="quest_completed" from="quest_manager" to="scecne_objects/quest_giver" method="_on_quest_manager_quest_completed"]
 [connection signal="timeout" from="scecne_objects/sword_cooldown" to="scecne_objects/player" method="_on_sword_cooldown_timeout"]
 [connection signal="attack" from="scecne_objects/player" to="scecne_objects/enemies/cactuses/StaticBody2D" method="_on_character_body_2d_attack"]
